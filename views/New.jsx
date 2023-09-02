@@ -17,6 +17,14 @@ const New = () => {
                     <input type="number" name="flightNo"/><br/>
                     <label htmlFor="departs">Departs Date</label><br/>
                     <input type="datetime-local" name="departs"/><br/>
+                    <label htmlFor="airport">Select Airport</label><br/>
+                    <select name="airport">
+                        <option value="AUS">AUS</option>
+                        <option value="DAL">DAL</option>
+                        <option value="LAX">LAX</option>
+                        <option value="SAN">SAN</option>
+                        <option value="SEA">SEA</option>
+                    </select><br/>
                     <input type="submit" name="" value="Create Flight"/>
                 </form>
             </section>

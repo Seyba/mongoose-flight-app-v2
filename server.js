@@ -37,6 +37,17 @@ app.get('/flights', async(req, res) => {
         res.status(404).send(error, 'No Flights Found!')
     }
 })
+app.get('/flights/list', async(req, res) => {
+    
+    try {
+        const flights = await Flight.find({})
+        res.render('FlightsList',{
+            flights
+        })
+    } catch (error) {
+        res.status(404).send(error, 'No Flights Found!')
+    }
+})
 
 //* create new flight
 app.get('/flights/create', (req, res) => {
@@ -60,6 +71,17 @@ app.get('/flights/:id', async(req, res) => {
         res.status(404).send(error, 'Flight not found!!')
     }
 })
+
+app.get('/flights/list/:id', async(req, res) => {
+    const { id }  = req.params
+    try {
+        const flight = await Flight.findById(id)
+        res.render('Details', {flight})
+    } catch (error) {
+        res.status(404).send(error, 'Flight not found!!')
+    }
+})
+
 //* connection to the database 
 databaseConnection()
 
