@@ -13,6 +13,7 @@ const Home = (props) => {
             <section style={px}>
                 <h2>Welcome to mongoose flight app!</h2>
                 <p>Check your flight airline and depature time.</p>
+                <a href="flights/list">Flights list</a>
             </section>
         </main> 
     )
