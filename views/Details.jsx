@@ -3,8 +3,19 @@ const Header = require('./Header')
 const Details = (props) => {
     const { airline, flightNo, destinations, airport, departs } = props.flight
     const departureDate = departs.toISOString().slice(0, 16).replace('T', ' ')
-    const arrivalTime = destinations.arrival
-    const arrival = destinations.arrival
+    const destPlaceholder = (destinations.length? (
+        destinations.map(dest => {
+            const formattedArrival = dest.arrival.toISOString().slice(0, 16).replace('T', ' ')
+            return <li style={{listStyle: 'none'}}>{dest.airport} | {formattedArrival} </li>
+        })
+    ):(
+        "No Destinations"
+    ))
+
+    const destInfo = destinations.map(dest => {
+        const formattedArrival = dest.arrival.toISOString().slice(0, 16).replace('T', ' ')
+        return <li>{dest.airport} | {formattedArrival} </li>
+    })
     
     return(
         <main>
@@ -29,8 +40,25 @@ const Details = (props) => {
                 </div>
                 <div>
                     <h4>DESTINATIONS</h4>
-                    <h5>{arrival}|{arrivalTime}</h5>
+                    <h5>{destPlaceholder}</h5>
                 </div>
+            </div>
+            <div style={{display: 'flex', justifyContent: 'center'}}>
+                <form action="/flights/list/destinationS/id" method="PUT">
+                    <label htmlFor="airport">Destination Airport</label><br/>
+                    <select name="airport">
+                        <option value="AUS">AUS</option>
+                        <option value="DAL">DAL</option>
+                        <option value="LAX">LAX</option>
+                        <option value="SAN">SAN</option>
+                        <option value="SEA">SEA</option>
+                    </select><br/>
+
+                    <label htmlFor="arrival">Arrival Date</label><br/>
+                    <input type="datetime-local" name="arrival"/><br/>
+                    
+                    <input type="submit" name="" value="Add Destination"/>
+                </form>
             </div>
         </main>
     )

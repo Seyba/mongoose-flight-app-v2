@@ -62,6 +62,18 @@ app.post('/flights', async (req, res) => {
         console.log(error, 'Flight not created!')
     }
 })
+
+app.put('/flights/list/destinations/:id', async(req, res) => {
+    const { id } = req.params
+    try {
+       const flight = await Flight.findById(id) 
+       flight.destinations.push(req.body)
+       const updatedFlight = await Flight.findByIdAndUpdate(id, flight, {new: true})
+       res.send(updatedFlight)
+    } catch (error) {
+        res.send(error, 'Adding destination failed!')
+    }
+})
 app.get('/flights/:id', async(req, res) => {
     const { id }  = req.params
     try {
