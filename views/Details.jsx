@@ -49,7 +49,7 @@ const Details = (props) => {
             <div style={{display: 'flex', justifyContent: 'center', fontSize: '20px'}}>
                 
                 <form action={`/flights/list/${_id}?_method=PUT`}method="POST">
-                    <label htmlFor="airport">Destination Airport</label>
+                    <label htmlFor="airport">Destination Airport: </label>
                     <select name="airport">
                         <option value="AUS">AUS</option>
                         <option value="DAL">DAL</option>
@@ -58,7 +58,7 @@ const Details = (props) => {
                         <option value="SEA">SEA</option>
                     </select>
 
-                    <label htmlFor="arrival">Arrival Date</label>
+                    <label htmlFor="arrival">Arrival Date : </label>
                     <input type="datetime-local" name="arrival"/>
                     
                     <input type="submit" name="" value="Add Destination"/>
