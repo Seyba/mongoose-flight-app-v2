@@ -8,7 +8,9 @@ const Details = (props) => {
         fontSize: '20px'
     }
     const { airline, flightNo, destinations, airport, departs, _id } = props.flight
+    
     const departureDate = departs.toISOString().slice(0, 16).replace('T', ' ')
+    
     const destPlaceholder = (destinations.length? (
         destinations.map(dest => {
             const formattedArrival = dest.arrival.toISOString().slice(0, 16).replace('T', ' ')
@@ -17,11 +19,6 @@ const Details = (props) => {
     ):(
         "No Destinations"
     ))
-    
-    const destInfo = destinations.map(dest => {
-        const formattedArrival = dest.arrival.toISOString().slice(0, 16).replace('T', ' ')
-        return <li>{dest.airport} | {formattedArrival} </li>
-    })
     
     return(
         <main>
