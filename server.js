@@ -2,6 +2,7 @@ const express = require('express')
 require('dotenv').config()
 const databaseConnection = require('./config/database')
 const jsxEngine = require('jsx-view-engine')
+const methodOverride = require('method-override');
 const Flight = require('./models/flight')
 
 //* App config
@@ -19,6 +20,7 @@ app.use((req, res, next) => {
 })
 app.use(express.urlencoded({extended:false}))
 app.use(express.json())
+app.use(methodOverride('_method'))
 
 //* Routes
 app.get('/', (req, res) => {
@@ -63,17 +65,18 @@ app.post('/flights', async (req, res) => {
     }
 })
 
-app.put('/flights/list/destinations/:id', async(req, res) => {
+app.put('/flights/list/:id', async(req, res) => {
     const { id } = req.params
     try {
        const flight = await Flight.findById(id) 
        flight.destinations.push(req.body)
        const updatedFlight = await Flight.findByIdAndUpdate(id, flight, {new: true})
-       res.send(updatedFlight)
+       res.redirect('/flights/list')
     } catch (error) {
-        res.send(error, 'Adding destination failed!')
+        console.log(error, 'Adding destination failed!')
     }
 })
+
 app.get('/flights/:id', async(req, res) => {
     const { id }  = req.params
     try {

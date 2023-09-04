@@ -30,7 +30,10 @@ const Header = () => {
             <div>
                 <ul style={{display: 'flex'}}>
                     <li style={noBullet}>
-                        <a style={noDec} href="/flights">All Flights</a>
+                        <a style={noDec} href="/flights/list">All Flights</a>
+                    </li>
+                    <li style={noBullet}>
+                        <a style={noDec} href="/flights">Sort by date</a>
                     </li>
                     <li style={noBullet}>
                         <a style={noDec} href="flights/create">Add Flight</a>

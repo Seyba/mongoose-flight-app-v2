@@ -10,10 +10,9 @@ const FlightsList = (props) => {
             {
                 flights.map(flight => {
                     return(<div style={{display: 'flex', justifyContent:'center'}}>
-                        <li style={{listStyle: 'none'}}>
-                            {flight.airline}
-                            {' '}
-                            <a style={{textDecoration: 'none'}} href={`/flights/list/${flight._id}`}>Details</a>
+                        <li style={{listStyle: 'none', display: 'flex'}}>
+                            <div style={{fontSize: '20px', padding: '5px 5px'}}>{flight.airline}</div>
+                            <a style={{textDecoration: 'none',fontSize: '20px', padding: '5px 5px'}} href={`/flights/list/${flight._id}`}>Details</a>
                         </li>
                     </div>)
                 })

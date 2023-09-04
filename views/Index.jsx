@@ -6,7 +6,7 @@ const Index = (props) => {
         <main style={{textAlign: 'center'}}>
             
             <Header/>
-            <h2 style={{marginLeft: '30px'}}>Flights List</h2>
+            <h2 style={{marginLeft: '30px'}}>Flights Sorted By Departure Date</h2>
             <ul>
                 { flights.map(flight => {
                     const formattedDate = flight.departs.toISOString().slice(0, 16).replace('T', ' ')
