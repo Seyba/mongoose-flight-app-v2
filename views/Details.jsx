@@ -1,6 +1,12 @@
 const React = require('react')
 const Header = require('./Header')
 const Details = (props) => {
+    //* Styles
+    const container = {
+        display: 'flex', 
+        justifyContent: 'center', 
+        fontSize: '20px'
+    }
     const { airline, flightNo, destinations, airport, departs, _id } = props.flight
     const departureDate = departs.toISOString().slice(0, 16).replace('T', ' ')
     const destPlaceholder = (destinations.length? (
@@ -46,7 +52,7 @@ const Details = (props) => {
             <div style={{display: 'flex', justifyContent: 'center'}}>
                 <h3>Add Destination</h3>
             </div>
-            <div style={{display: 'flex', justifyContent: 'center', fontSize: '20px'}}>
+            <div style={container}>
                 
                 <form action={`/flights/list/${_id}?_method=PUT`}method="POST">
                     <label htmlFor="airport">Destination Airport: </label>
