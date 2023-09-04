@@ -10,9 +10,9 @@ const Details = (props) => {
     const { airline, flightNo, destinations, airport, departs, _id } = props.flight
     
     const departureDate = departs.toISOString().slice(0, 16).replace('T', ' ')
-    
+
     const destPlaceholder = (destinations.length? (
-        destinations.map(dest => {
+        destinations.sort((a, b) => a.arrival - b.arrival).map(dest => {
             const formattedArrival = dest.arrival.toISOString().slice(0, 16).replace('T', ' ')
             return <li style={{listStyle: 'none'}}>{dest.airport} | {formattedArrival} </li>
         })

@@ -43,11 +43,12 @@ app.get('/flights/list', async(req, res) => {
     
     try {
         const flights = await Flight.find({})
+
         res.render('FlightsList',{
             flights
         })
     } catch (error) {
-        res.status(404).send(error, 'No Flights Found!')
+        console.log(error, 'No Flights Found!')
     }
 })
 
